@@ -4,7 +4,7 @@
   "description": "Repositório destinado práticas realizadas no curso.dev",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run services:up && npm run services:wait:database && npm run migrations:up && next dev",
+    "dev": "node scripts/dev.js",
     "test": "npm run services:up && concurrently --n next,jest --hide next -k -s command-jest \"next dev\" \"jest --runInBand --verbose\"",
     "posttest": "npm run services:stop",
     "test:watch": "jest --watchAll --runInBand --verbose",
@@ -16,6 +16,7 @@
     "migrations:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
     "lint:eslint:check": "next lint --dir .",
     "build": "next build",
+    "next": "next dev",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "prepare": "husky",
